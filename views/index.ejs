@@ -1,14 +1,38 @@
-<%-include('partials/header')-%>
-<h1>index page</h1>
-<% blogs.forEach(function(blog){%>
-    <div>
-        <h2><%=blog.title%></h2>
-    </div>
-    <div>
-        <img src="<%=blog.image%>" alt="">
-    </div>
-    <p><%=blog.body%></p>
-    <span><%=blog.created%></span>
+ <%- include('partials/header') -%>
+ 
 
-<%})%>
-<%-include('partials/footer')-%>
+<div class="container">
+<header class="jumbotron">
+    <!-- <link href="bootstrap.c ss"> -->
+    <h1>Welcome to YelpCamp!</h1>
+    <p>View our hand-picked campgrounds from all over the world</p>
+    <p>
+        <a class="btn btn-primary btn-large" href="/campgrounds/new">Add new Campground</a>
+    </p>
+</header>
+<!-- <style>
+    .img{
+            height: 200px;
+            width: 100px;
+       
+    }
+</style> -->
+<div class="row" style="display:flex; flex-wrap: wrap;">
+    <% campgrounds.forEach(function(campground){ %>
+        <div class="col-md-3 col-sm-6" >
+            <div class="thumbnail">
+                <div class="caption text-center">
+           <h4><%= campground.name %></h4>
+        </div>
+           <img src="<%= campground.image %>" class="img"> 
+        </div>
+        <p>
+            <a href="/campgrounds/<%= campground._id%>" class="btn btn-primary">More Info</a>
+        </p>
+        </div>
+      
+    <% }) %>
+    </div>  
+</div> 
+</body>
+</html>
